@@ -13,7 +13,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js',
-        publicPath: ''
+        publicPath: '/'
     },
     resolve: {
         alias: {
@@ -42,7 +42,7 @@ module.exports = {
     plugins: [
       new webpack.BannerPlugin('This file is created by onlyBreak'),
       new HtmlWebpackPlugin({
-        // filename: path.resolve(__dirname, '../dist/index.html'),
+        filename: path.resolve(__dirname, '../dist/index.html'),
         template: 'index.html'
       })
     ]

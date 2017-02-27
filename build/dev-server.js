@@ -9,7 +9,12 @@ var app = express()
 var compiler = webpack(config)
 
 // 使用webpack-dev-middleware中间件
-var devMiddleware = require('webpack-dev-middleware')(compiler)
+var devMiddleware = require('webpack-dev-middleware')(compiler, {
+    stats: {
+        colors: true,
+        chunks: false
+    }
+})
 
 // 注册中间件
 app.use(devMiddleware)
