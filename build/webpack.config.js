@@ -1,9 +1,6 @@
 var webpack = require('webpack')
 var path = require('path')
 
-// https://github.com/jantimon/html-webpack-plugin
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-
 module.exports = {
     entry: './src/main.js',
     // entry: {
@@ -38,12 +35,5 @@ module.exports = {
                 loader: 'vue-loader'
             }
         ]
-    },
-    plugins: [
-      new webpack.BannerPlugin('This file is created by onlyBreak'),
-      new HtmlWebpackPlugin({
-        filename: path.resolve(__dirname, '../dist/index.html'),
-        template: 'index.html'
-      })
-    ]
+    }
 }

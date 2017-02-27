@@ -1,6 +1,6 @@
 var express = require('express')
 var webpack = require('webpack')
-var config = require('./webpack.config.js')
+var config = require('./webpack.dev.conf.js')
 
 // 创建一个express实例
 var app = express()
