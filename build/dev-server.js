@@ -16,6 +16,8 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
     }
 })
 
+app.use(require('webpack-hot-middleware')(compiler))
+
 // 注册中间件
 app.use(devMiddleware)
 

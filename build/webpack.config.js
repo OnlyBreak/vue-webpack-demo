@@ -2,7 +2,7 @@ var webpack = require('webpack')
 var path = require('path')
 
 module.exports = {
-    entry: './src/main.js',
+    entry: ['webpack-hot-middleware/client', './src/main.js'],
     // entry: {
     //     'entry.1': '../entry.1.js',
     //     'entry.2': '../entry.2.js'
