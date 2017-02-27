@@ -16,10 +16,21 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
     }
 })
 
-app.use(require('webpack-hot-middleware')(compiler))
+var hotMiddleware = require('webpack-hot-middleware')(compiler)
+
+// force page reload when html-webpack-plugin template changes
+compiler.plugin('compilation', (compilation) => {
+    compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+        hotMiddleware.publish({
+            action: 'reload'
+        })
+        cb()
+    })
+})
 
 // 注册中间件
 app.use(devMiddleware)
+app.use(hotMiddleware)
 
 app.listen(8888, function(err) {
     if(err) {
