@@ -15,12 +15,13 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.common.js'
         }
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader'

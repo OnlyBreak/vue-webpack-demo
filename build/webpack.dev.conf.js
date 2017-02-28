@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
-var baseWebpackConfig = require('./webpack.config');
+var baseWebpackConfig = require('./webpack.base.conf');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // add hot-reload related code to entry chunks
@@ -12,6 +12,7 @@ Object.keys(baseWebpackConfig.entry).forEach((name => {
 }))
 module.exports = merge(baseWebpackConfig, {
     plugins: [
+      new webpack.BannerPlugin('This file is created by onlyBreak'),
       // https://github.com/glenjamin/webpack-hot-middleware#installation--usa
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
