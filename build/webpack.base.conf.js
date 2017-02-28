@@ -1,5 +1,6 @@
-var webpack = require('webpack')
-var path = require('path')
+var webpack = require('webpack');
+var path = require('path');
+var vueLoaderConfig = require('./vue-loader.conf');
 
 module.exports = {
     entry: {
@@ -35,7 +36,8 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: vueLoaderConfig
             }
         ]
     }

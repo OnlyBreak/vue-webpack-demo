@@ -15,15 +15,11 @@ module.exports = merge(baseWebpackConfig, {
         ]
     },
     plugins: [
-      new webpack.LoaderOptionsPlugin({
-        vue: {
-            loaders: {
-                css: ExtractTextPlugin.extract('css-loader')
-            }
-        }
-      }),
       new webpack.BannerPlugin('This file is created by onlyBreak'),
-      new ExtractTextPlugin("style.css"),
+      // https://github.com/webpack-contrib/extract-text-webpack-plugin
+      new ExtractTextPlugin({
+        filename: '[name].css'
+      }),
       new HtmlWebpackPlugin({
         filename: path.resolve(__dirname, '../dist/index.html'),
         template: 'index.html',
