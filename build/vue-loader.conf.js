@@ -4,8 +4,12 @@ module.exports = {
     module: {
         rules: [
           {
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract(['css-loader'])
+            test: /\.sass$/,
+            use: [{
+                loader: 'css-loader'
+            }, {
+                loader: 'sass-loader'
+            }]
           }
         ]
     },
