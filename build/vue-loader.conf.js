@@ -1,8 +1,13 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    loaders: {
-        css: ExtractTextPlugin.extract(['css-loader'])
+    module: {
+        rules: [
+          {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract(['css-loader'])
+          }
+        ]
     },
     postcss: [
       require('autoprefixer')({
