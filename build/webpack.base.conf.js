@@ -4,7 +4,7 @@ var vueLoaderConfig = require('./vue-loader.conf');
 
 module.exports = {
     entry: {
-        index: './src/main.js'
+        app: './src/main.js'
     },
     // entry: {
     //     'entry.1': '../entry.1.js',
@@ -23,10 +23,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
