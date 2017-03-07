@@ -22,6 +22,7 @@ exports.cssLoaders = (options) => {
     }
 
     return {
-        css: generateLoaders()
+        css: generateLoaders(),
+        sass: generateLoaders('sass')
     }
 }
