@@ -1,4 +1,5 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+let path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.cssLoaders = (options) => {
     const cssLoader = {
@@ -25,4 +26,8 @@ exports.cssLoaders = (options) => {
         css: generateLoaders(),
         sass: generateLoaders('sass')
     }
+}
+
+exports.assetsPath = function (_path) {
+    return path.posix.join('static', _path)
 }
