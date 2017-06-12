@@ -1,9 +1,10 @@
-var path = require('path');
-var webpack = require('webpack');
-var baseWebpackConfig = require('./webpack.base.conf');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var merge = require('webpack-merge');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path')
+var webpack = require('webpack')
+var baseWebpackConfig = require('./webpack.base.conf')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var merge = require('webpack-merge')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var config = require('../config')
 var utils = require('./utils');
 
 module.exports = merge(baseWebpackConfig, {
@@ -14,7 +15,7 @@ module.exports = merge(baseWebpackConfig, {
         filename: 'style.css'
       }),
       new HtmlWebpackPlugin({
-        filename: path.resolve(__dirname, '../dist/index.html'),
+        filename: config.build.index,
         template: 'index.html',
         inject: true
       }),
@@ -33,7 +34,7 @@ module.exports = merge(baseWebpackConfig, {
       })
     ],
     output: {
-      path: path.resolve(__dirname, '../dist'),
+      path: config.build.assetsRoot,
       filename: utils.assetsPath('js/[name].js')
     }
 })
