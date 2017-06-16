@@ -15,7 +15,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
   margin: 0;
   padding: 0;
 }
-input[type="button"], input[type="submit"], input[type="reset"], input[type="text"], input[type="number"] {
+input[type="button"], input[type="submit"], input[type="reset"], input[type="number"] {
   -webkit-appearance: none;
   border: none;
   outline: none;
