@@ -15,7 +15,7 @@
           placeholder="密码"
           type="password">
         </el-input>
-        <el-button type="primary">登录</el-button>
+        <el-button type="primary" v-on:click="login">登录</el-button>
       </el-row>
     </el-col>
   </el-row>
@@ -27,7 +27,20 @@ export default {
     return {
       account: '',
       password: ''
-    };
+    }
+  },
+
+  methods: {
+    login () {
+      let data = {
+        name: this.account,
+        id: this.password
+      }
+
+      this.$http.post('/auth/user', data).then((res) => {
+        console.log('--res', res)
+      })
+    }
   }
 }
 </script>

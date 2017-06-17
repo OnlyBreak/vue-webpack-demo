@@ -2,9 +2,12 @@ const Koa = require('koa')
 const app = new Koa()
 const router = require('koa-router')()
 const auth = require('./server/routes/auth')
-const convert = require('koa-convert');
+const convert = require('koa-convert')
+const bodyParser = require('koa-bodyparser')()
 
-app.use(convert(function *(next) {
+app.use(bodyParser)
+
+app.use(function *(next) {
   const start = new Date();
   yield next;
 
@@ -13,7 +16,7 @@ app.use(convert(function *(next) {
 
   const ms = new Date() - start;
   console.log(`${this.method} ${this.url} - ${ms}ms`);
-}));
+});
 
 router.use('/auth', auth.routes())
 app.use(router.routes())

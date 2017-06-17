@@ -2,9 +2,9 @@ var db = require('../config/db.js')
 var mongoose = require('mongoose')
 var UserSchema = require('../schema/user')
 
-var User = mongoose.model('User', UserSchema)
+const User = mongoose.model('User', UserSchema)
 
-var saveUserInfo = (info) => {
+const saveUserInfo = (info) => {
   User.create(info, (err) => {
     if (err) {
       return console.error(error)
@@ -13,13 +13,22 @@ var saveUserInfo = (info) => {
   })
 }
 
-var getUserById = function *(id) {
+const getUserById = function *(id) {
   return yield User.findOne({
     id: id
   })
 }
 
+const getUserByName = function *(name) {
+  console.log('--name', name)
+  const userInfo = yield User.findOne({
+    name: name
+  })
+  return userInfo
+}
+
 module.exports = {
   saveUserInfo,
-  getUserById
+  getUserById,
+  getUserByName
 }
