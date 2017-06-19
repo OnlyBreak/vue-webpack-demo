@@ -1,12 +1,16 @@
 const user = require('../model/user')
 const convert = require('koa-convert')
-const jwt = require('koa-jwt')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+var salt = bcrypt.genSaltSync(10)
 
-let jack = {
-  id: '5'
-}
+// let jack = {
+//   id: 0,
+//   user_name: 'zhang',
+//   password: bcrypt.hashSync('1', salt)
+// }
 
-// User.saveUserInfo(jack)
+// user.saveUserInfo(jack)
 
 const getUserInfo = function *() {
   let id = this.params.id
@@ -18,21 +22,21 @@ const getUserInfo = function *() {
 const postUserAuth = function *() {
   const data = this.request.body
   const userInfo = yield user.getUserByName(data.name)
-  console.log('--userInfo', userInfo)
+
   if (userInfo != null) {
-    if (userInfo.password != data.password) {
+    if (data.password != userInfo.password) {
       this.body = {
         success: false,
         info: '密码错误！'
       }
     } else {
       const userToken = {
-        name: userInfo.name,
-        id: userInfo.id
+        name: userInfo.user_name,
+        password: userInfo.password
       }
-      console.log('--userToken', userToken)
       const secret = 'vue-koa-demo'
       const token = jwt.sign(userToken, secret)
+
       this.body = {
         success: true,
         token: token

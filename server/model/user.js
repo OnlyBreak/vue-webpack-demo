@@ -20,10 +20,10 @@ const getUserById = function *(id) {
 }
 
 const getUserByName = function *(name) {
-  console.log('--name', name)
   const userInfo = yield User.findOne({
-    name: name
+    user_name: name
   })
+  console.log('--getUserByName', userInfo)
   return userInfo
 }
 

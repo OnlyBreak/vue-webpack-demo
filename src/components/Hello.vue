@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  // import flexible from '../../static/js/flexible.js'
+  import flexible from '../../static/js/flexible.js'
   import util from './common/util'
   import { classSetting, selector, event, display, style } from './common/common'
   export default {

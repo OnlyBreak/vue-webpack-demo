@@ -24,11 +24,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|vue)$/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['es2015']
-                }
+                },
             },
             {
                 test: /\.vue$/,
@@ -52,5 +52,9 @@ module.exports = {
                 loader: 'style-loader!css-loader'
             }
         ]
+    },
+    node: {
+        net: 'empty',
+        dns: 'empty'
     }
 }
