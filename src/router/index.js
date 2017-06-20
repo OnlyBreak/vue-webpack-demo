@@ -8,11 +8,6 @@ Vue.use(Router)
 
 const routes = [
   {
-    path: '/hello',
-    name: 'Hello',
-    component: Hello
-  },
-  {
     path: '/',
     name: 'Login',
     component: Login
@@ -20,9 +15,15 @@ const routes = [
   {
     path: '/todolist',
     component: TodoList
-  }
+  },
+  {
+    path: '/hello',
+    name: 'Hello',
+    component: Hello
+  },
 ]
 
 export default new Router({
+  mode: 'history',
   routes
 })

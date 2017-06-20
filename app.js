@@ -4,6 +4,9 @@ const router = require('koa-router')()
 const auth = require('./server/routes/auth')
 const convert = require('koa-convert')
 const bodyParser = require('koa-bodyparser')()
+const path = require('path')
+const serve = require('koa-static')
+const historyApiFallback = require('koa-history-api-fallback')
 
 app.use(bodyParser)
 
@@ -20,6 +23,9 @@ app.use(function *(next) {
 
 router.use('/auth', auth.routes())
 app.use(router.routes())
+
+app.use(historyApiFallback())
+app.use(serve(path.resolve('dist')))
 
 app.on('error', (err, ctx) => {
   console.log('server error', err)

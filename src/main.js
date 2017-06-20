@@ -12,13 +12,13 @@ router.beforeEach((to, from, next) => {
   const token = sessionStorage.getItem('demo-token')
 
   if (to.path === '/') {
-    if (token !== null) {
-      next('/hello')
+    if (token != null) {
+      next('/todolist')
     }
     next()
   } else {
     if (token != null) {
-      Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token; // 全局设定header的token验证，注意Bearer后有个空格
+      // Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token; // 全局设定header的token验证，注意Bearer后有个空格
       next()
     } else {
       next('/')
