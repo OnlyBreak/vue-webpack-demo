@@ -2,9 +2,14 @@ var webpack = require('webpack');
 var path = require('path');
 var vueLoaderConfig = require('./vue-loader.conf');
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
     entry: {
-        app: './src/main.js'
+        app: './src/main.js',
+        vendor: ['vue', 'element-ui', 'axios', 'vue-router']
     },
     // entry: {
     //     'entry.1': '../entry.1.js',
@@ -24,11 +29,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|vue)$/,
+                test: /\.js$/,
+                include: [resolve('src')],
                 loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                },
             },
             {
                 test: /\.vue$/,
@@ -45,6 +48,7 @@ module.exports = {
                 query: {
                     limit: 10000
                     // name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+
                 }
             },
             {
