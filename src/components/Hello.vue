@@ -84,21 +84,21 @@
         }
 
         this.dissecting = true
-        const p1 = this.$http.post('resultPersonalityTest', data).then((resp) => {
-          let data = resp.data.data
-          this.userInformation = data
-        })
-
-        Promise.all([p1]).then(() => {
-          let code = this.userInformation.code
-          let path = this.$router._root + this.$router.stringifyPath({name: 'label'})
-          let redirectUrl = path + '?code=' + code
-          let url = window.location.protocol + '//' + window.location.hostname + redirectUrl
-
-          setTimeout(() => {
-            window.location = url
-          }, 600)
-        })
+//        const p1 = this.$http.post('resultPersonalityTest', data).then((resp) => {
+//          let data = resp.data.data
+//          this.userInformation = data
+//        })
+//
+//        Promise.all([p1]).then(() => {
+//          let code = this.userInformation.code
+//          let path = this.$router._root + this.$router.stringifyPath({name: 'label'})
+//          let redirectUrl = path + '?code=' + code
+//          let url = window.location.protocol + '//' + window.location.hostname + redirectUrl
+//
+//          setTimeout(() => {
+//            window.location = url
+//          }, 600)
+//        })
       },
 
       IsnotFill() {
@@ -127,7 +127,7 @@
         for (let list of sex) {
           classSetting.remove(list, 'active')
         }
-        classSetting.add(list, 'active')
+        classSetting.add(active, 'active')
         this.testIsAllFill()
       },
 
@@ -274,6 +274,7 @@ input[type=date] {
         font-size: inherit;
         flex: auto;
         height: px2rem(60px);
+        outline: none;
       }
       .date {
         flex: auto;
