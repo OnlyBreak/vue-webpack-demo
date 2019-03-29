@@ -1,4 +1,3 @@
-<script>
   class PZ_CLASS_SETTING {
     add(dom, name) {
       if (!dom.classList.contains(name)) {
@@ -88,4 +87,3 @@
     DISPLAY as display,
     STYLE as style
   };
-</script>

@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var utils = require('./utils');
-var vueLoaderConfig = require('./vue-loader.conf');
+const { VueLoaderPlugin } = require('vue-loader');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -10,12 +10,8 @@ function resolve (dir) {
 module.exports = {
     entry: {
         app: './src/main.js',
-        vendor: ['vue', 'element-ui', 'axios', 'vue-router']
+        // vendor: ['vue', 'axios', 'vue-router']
     },
-    // entry: {
-    //     'entry.1': '../entry.1.js',
-    //     'entry.2': '../entry.2.js'
-    // },
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].js',
@@ -24,20 +20,19 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            'vue$': 'vue/dist/vue.common.js'
+            vue$: 'vue/dist/vue.esm.js'
         }
     },
     module: {
         rules: [
             {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+            },
+            {
                 test: /\.js$/,
                 include: [resolve('src')],
                 loader: 'babel-loader',
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: vueLoaderConfig
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -57,6 +52,7 @@ module.exports = {
             }
         ]
     },
+    plugins: [new VueLoaderPlugin()],
     node: {
         net: 'empty',
         dns: 'empty'

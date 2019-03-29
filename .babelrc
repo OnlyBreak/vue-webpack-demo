@@ -1,6 +1,17 @@
 {
-    "presets": [
-        ["stage-2"],
-        ["es2015",  {"modules": false}]
+  "presets": [
+    "@vue/babel-preset-jsx",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        }
+      }
     ]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime"
+  ]
 }

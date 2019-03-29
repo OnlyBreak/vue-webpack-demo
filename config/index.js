@@ -8,6 +8,7 @@ module.exports = {
   },
   dev: {
     env: '"development"',
+    assetsSubDirectory: 'static',
     proxyTable: {
       '/auth': {
         target: 'http://localhost:8889',

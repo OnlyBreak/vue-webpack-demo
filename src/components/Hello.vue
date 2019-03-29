@@ -216,11 +216,7 @@
   }
 </script>
 
-<style>
-  @import '~animate.css';
-</style>
-
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 $rem: 75px;
 @function px2rem($px) {
 @return $px / $rem * 1rem

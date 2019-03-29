@@ -133,7 +133,7 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .el-input {
     margin: 20px auto;
   }
